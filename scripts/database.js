@@ -61,3 +61,11 @@ const database = {
     { id: 3, name: "Music" }
   ]
 };
+
+export const getArticles = () => {
+  return database.articles.map(article => ({ ...article }))
+}
+
+export const getCategories = () => {
+  return database.categories.map(category => ({ ...category }))
+}
