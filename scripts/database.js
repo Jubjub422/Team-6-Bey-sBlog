@@ -69,3 +69,7 @@ export const getArticles = () => {
 export const getCategories = () => {
   return database.categories.map(category => ({ ...category }))
 }
+
+export const getAuthors = () => {
+  return database.authors.map(author => ({...author}))
+}
