@@ -1,6 +1,7 @@
-import { getArticles } from "./database.js"
+import { getArticles, getAuthors } from "./database.js"
 
 const articles = getArticles()
+const authors = getAuthors()
 
 document.addEventListener(
     "click",  
@@ -12,8 +13,8 @@ document.addEventListener(
 
         if (itemClicked.id.startsWith(`${articles.headline}`)) {
 
-        const [,articleId] = itemClicked.id.split("--")
-        theseArticles(articleId)
+        const [,articleId,authorId] = itemClicked.id.split("--")
+        theseArticles(articleId, authorId)
          
         }
     }
@@ -23,11 +24,17 @@ document.addEventListener(
 
 
 
-export const theseArticles = (articleId) => {
+export const theseArticles = (articleId, authorId) => {
     for (const article of articles) {
         if (article.id === parseInt(articleId)) {
         window.alert(`${article.body}`)
         }
+    for (const author of authors) {
+        if (articles.authorId === parseInt(authorId)) {
+            window.alert(`${author.name}`)
+        }
+    }
     }
 }
+
 
