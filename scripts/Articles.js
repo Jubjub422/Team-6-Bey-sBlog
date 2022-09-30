@@ -1,33 +1,15 @@
 import { getArticles } from "./database.js"
 
-const articles = getArticles()
+const articlesArray= getArticles()
 
-document.addEventListener(
-    "click",  
-    (clickEvent) => {
+//return an html representation of each article that will only display the title of the article itself.
+
+const articleList = () => {
+    articleHTML= ""
+    for (const article of articlesArray){
+        articleHTML +=`<div>The title of this article is ${article.headline}</div>`
+    }
     
-        const itemClicked = clickEvent.target
-
-            console.log(itemClicked.id)
-
-        if (itemClicked.id.startsWith(`${articles.headline}`)) {
-
-        const [,articleId] = itemClicked.id.split("--")
-        theseArticles(articleId)
-         
-        }
-    }
-)
-
-
-
-
-
-export const theseArticles = (articleId) => {
-    for (const article of articles) {
-        if (article.id === parseInt(articleId)) {
-        window.alert(`${article.body}`)
-        }
-    }
+    return articleHTML
 }
 
